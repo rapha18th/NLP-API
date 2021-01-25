@@ -73,7 +73,7 @@ def sentiment(mytext):
 # Word cloud
 @app.route('/api/v1/wordcloud/<string:mytext>', methods=['Get'])
 def fig(mytext):
-    plt.figure(figsize=(20,10))
+    plt.figure(figsize=(10,10))
     wordcloud = WordCloud(background_color='white', mode = "RGB", width = 2000, height = 1000).generate(mytext)
     plt.imshow(wordcloud)
     plt.axis("off")
@@ -128,7 +128,7 @@ def wiki_sentiment(mytext):
 def wiki_fig(mytext):
     wiki_page = wk.page(mytext)
     content = wiki_page.content
-    plt.figure(figsize=(20,10))
+    plt.figure(figsize=(10,10))
     wordcloud = WordCloud(background_color='white', mode = "RGB", width = 2000, height = 1000).generate(content)
     plt.imshow(wordcloud)
     plt.axis("off")
