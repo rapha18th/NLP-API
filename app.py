@@ -18,7 +18,7 @@ import wikipedia as wk
 
 import config
 
-nlp = spacy.load('en')
+nlp = spacy.load('en-core-web-sm')
 
 import nltk
 import ssl
