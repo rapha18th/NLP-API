@@ -41,7 +41,7 @@ def tokens(mytext):
 	docx = nlp(mytext)
 	# Tokens
 	mytokens = [token.text for token in docx ]
-	return jsonify(mytext,mytokens)
+	return jsonify(mytext,len(mytokens))
 
 # Lemma
 @app.route('/api/v1/lemma/<string:mytext>',methods=['GET'])
