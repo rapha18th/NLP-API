@@ -10,11 +10,14 @@ GET `https://nlpcol.herokuapp.com/api/v1/tokens/{mytext}`
 ### lemmatization
 GET `https://nlpcol.herokuapp.com/api/v1/lemma/{mytext}`
 
-### Named entities
+### named entities
 GET `https://nlpcol.herokuapp.com/api/v1/ner/{mytext}`
 
-### Sentiment
+### sentiment
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_sentiment/{mytext}`
+
+### word cloud
+GET `https://nlpcol.herokuapp.com/api/v1/wordcloud/{mytext}`
 
 ## Wikipedia NLP Collection
 Example:
@@ -34,6 +37,9 @@ GET `https://nlpcol.herokuapp.com/api/v1/wiki_ner/{mytext}`
 
 ### sentiment of the content of a wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_sentiment/{mytext}`
+
+### wikipedia word cloud
+GET `https://nlpcol.herokuapp.com/api/v1/wiki_wordcloud/{mytext}`
 
 
 
