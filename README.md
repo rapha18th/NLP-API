@@ -21,7 +21,7 @@ GET `https://nlpcol.herokuapp.com/api/v1/wordcloud/{mytext}`
 
 ## Wikipedia NLP Collection
 Example:
-[![Screenshot-2021-01-25-at-23-06-35.png](https://i.postimg.cc/SK53j5hF/Screenshot-2021-01-25-at-23-06-35.png)](https://postimg.cc/d724x534)
+[![Screenshot-2021-01-26-at-00-51-38.png](https://i.postimg.cc/sg7gPvy1/Screenshot-2021-01-26-at-00-51-38.png)](https://postimg.cc/HrWmdWrC)
 
 ### summary of wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_summary/{mytext}`
