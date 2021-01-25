@@ -14,6 +14,7 @@ import random
 import time
 import os
 import requests
+import wikipedia as wk
 
 import config
 
@@ -66,7 +67,7 @@ def ner(mytext):
 def sentiment(mytext):
 	# Analysis
 	blob = TextBlob(mytext)
-	mysentiment = [ mytext,blob.words,blob.sentiment ]
+	mysentiment = [ mytext,blob.sentiment ]
 	return jsonify(mysentiment)
 
 # Word cloud
@@ -79,8 +80,62 @@ def fig(mytext):
     img = BytesIO()
     plt.savefig(img)
     img.seek(0)
-    return send_file(img, mimetype='image/png')
+    return img
 
+
+# wikipedia summary
+@app.route('/api/v1/wiki_summary/<string:mytext>',methods=['GET'])
+def wiki_summary(mytext):
+	# Analysis
+	wiki_info = wk.summary(mytext, sentences = 8)
+	return jsonify(wiki_info)
+
+# wikipedia page images
+@app.route('/api/v1/wiki_img/<string:mytext>',methods=['GET'])
+def wiki_img(mytext):
+  wiki_page = wk.page(mytext)
+  imgs = wiki_page.images
+  return jsonify(imgs)
+
+# wikipedia page content
+@app.route('/api/v1/wiki_content/<string:mytext>',methods=['GET'])
+def wiki_content(mytext):
+  wiki_page = wk.page(mytext)
+  content = wiki_page.content
+  return jsonify(content)
+
+
+# wikipedia page ner
+@app.route('/api/v1/wiki_ner/<string:mytext>',methods=['GET'])
+def wiki_ner(mytext):
+  wiki_page = wk.page(mytext)
+  content = wiki_page.content
+  docx = nlp(content)
+  mynamedentities = [(entity.text,entity.label_)for entity in docx.ents]
+  return jsonify(mytext,mynamedentities)
+
+# sentiment analysis
+@app.route('/api/v1/wiki_sentiment/<string:mytext>',methods=['GET'])
+def wiki_sentiment(mytext):
+  wiki_page = wk.page(mytext)
+  content = wiki_page.content
+  blob = TextBlob(content)
+  sentiment = [ mytext,blob.sentiment ]
+  return jsonify(sentiment)
+
+# Wikipedia Word cloud
+@app.route('/api/v1/wiki_wordcloud/<string:mytext>', methods=['Get'])
+def wiki_fig(mytext):
+    wiki_page = wk.page(mytext)
+    content = wiki_page.content
+    plt.figure(figsize=(20,10))
+    wordcloud = WordCloud(background_color='white', mode = "RGB", width = 2000, height = 1000).generate(content)
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    img = BytesIO()
+    plt.savefig(img)
+    img.seek(0)
+    return img
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
