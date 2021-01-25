@@ -8,12 +8,28 @@ import spacy
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+import nltk
 from io import BytesIO
 import random
 import time
 import os
+import requests
+
+import config
 
 nlp = spacy.load('en')
+
+import nltk
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download('punkt')
 
 app = Flask(__name__)
 
@@ -54,7 +70,7 @@ def sentiment(mytext):
 	return jsonify(mysentiment)
 
 # Word cloud
-@app.route('api/v1/wordcloud/<string:mytext>', methods=['Get'])
+@app.route('/api/v1/wordcloud/<string:mytext>', methods=['Get'])
 def fig(mytext):
     plt.figure(figsize=(20,10))
     wordcloud = WordCloud(background_color='white', mode = "RGB", width = 2000, height = 1000).generate(mytext)
@@ -67,4 +83,4 @@ def fig(mytext):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
