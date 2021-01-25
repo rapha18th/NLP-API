@@ -4,10 +4,10 @@
 Example:
 [![Screenshot-2021-01-25-at-23-02-16.png](https://i.postimg.cc/2ynPsxgp/Screenshot-2021-01-25-at-23-02-16.png)](https://postimg.cc/XB7HF9Vx)
 
-### Number of tokens
+### number of tokens
 GET `https://nlpcol.herokuapp.com/api/v1/tokens/{mytext}`
 
-### Lemmatization
+### lemmatization
 GET `https://nlpcol.herokuapp.com/api/v1/lemma/{mytext}`
 
 ### Named entities
@@ -23,16 +23,16 @@ Example:
 ### summary of wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_summary/{mytext}`
 
-### Return the whole content of a wikipedia page
-GET `https://nlpcol.herokuapp.com/api/v1/wiki_content/{mytext}
+### returns the whole content of a wikipedia page
+GET `https://nlpcol.herokuapp.com/api/v1/wiki_content/{mytext}`
 
-### List the images urls of a wikipedia page
+### list the images urls of a wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_img/{mytext}`
 
-### Named entities of the content of a wikipedia page
+### named entities of the content of a wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_ner/{mytext}`
 
-### Sentiment of the content of a wikipedia page
+### sentiment of the content of a wikipedia page
 GET `https://nlpcol.herokuapp.com/api/v1/wiki_sentiment/{mytext}`
 
 
