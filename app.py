@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, jsonify, request, send_file, Response
 
 import re
 import regex
@@ -80,7 +80,7 @@ def fig(mytext):
     img = BytesIO()
     plt.savefig(img)
     img.seek(0)
-    return img
+    return Response(img.getvalue(), mimetype='image/png'
 
 
 # wikipedia summary
@@ -135,7 +135,7 @@ def wiki_fig(mytext):
     img = BytesIO()
     plt.savefig(img)
     img.seek(0)
-    return img
+    return Response(img.getvalue(), mimetype='image/png'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
